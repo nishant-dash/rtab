@@ -52,7 +52,7 @@ no-docstring-rgx = "__.*__"
 default-docstring-type = "sphinx"
 accept-no-param-doc = false
 accept-no-raise-doc = false
-accept-no-return-doc = false
+accept-no-return-doc = true
 accept-no-yields-doc = false
 
 [tool.mypy]

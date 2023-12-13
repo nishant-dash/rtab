@@ -1,7 +1,7 @@
 name: rt
 base: core22
 adopt-info: rt
-summary: A simple formatting cli that converts json, yaml and csv into tables using the rich library
+summary: Convert json, yaml or csv into tables using the rich library
 license: MIT
 description: |
   A simple formatting cli that converts json, yaml and csv into tables using the rich library

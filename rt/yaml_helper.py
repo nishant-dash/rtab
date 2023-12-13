@@ -1,15 +1,23 @@
+"""Load yaml data from stdin or file handler and print a rich table."""
+
 import yaml
 from rich.console import Console
 
 # project deps
-from base_helper import BaseToRichTable
+from rt.base_helper import BaseToRichTable
 
 # Initialize console object for print
 console = Console()
 
 
 class YamlToRichTable(BaseToRichTable):
-    def load(self, data) -> {}:
+    """This class inherits BaseToRichTable and loads yaml data to print a rich table out of."""
+
+    def load(self, data) -> {}:  # pylint: disable=missing-type-doc
+        """Load yaml data from stdin or file handler.
+
+        :param data: Can be either a string or file handler, used to load data from
+        """
         loaded_data = None
         try:
             loaded_data = yaml.safe_load(data)

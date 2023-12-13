@@ -1,33 +1,43 @@
+"""Load data from a file and print a rich table."""
+
 from pathlib import Path
 from rich.console import Console
 
-from json_helper import JsonToRichTable
-from yaml_helper import YamlToRichTable
-from csv_helper import CsvToRichTable
+from rt.json_helper import JsonToRichTable
+from rt.yaml_helper import YamlToRichTable
+from rt.csv_helper import CsvToRichTable
 
 # Initialize console object for print
 console = Console()
 
 
 class FileToRichTable:
+    """This class uses other helper classes to load data correctly to print a rich table."""
+
     def __init__(self, **kwargs):
         """Initialize inputs dict class variables."""
         self.options = kwargs
         self.obj = None
 
-    def load(self, filename) -> {}:
-        """Load data from filename using extrapolated object based on file extension."""
+    def load(self, filename: str) -> {}:  # pylint: disable=missing-type-doc
+        """Load data from filename using extrapolated object based on file extension.
+
+        :param filename: Name of the file to load data from
+        """
         data = None
         try:
-            with open(filename, "r") as f:
+            with open(filename, "r", encoding="utf-8") as f:
                 if self.obj:
                     data = self.obj.load(f)
         except IOError as error:
             console.print(error)
         return data
 
-    def run(self, filename) -> None:
-        """Print rich table using extrapolated object based on file extension."""
+    def run(self, filename: str) -> None:
+        """Print rich table using extrapolated object based on file extension.
+
+        :param filename: Name of the file to load data from
+        """
         file_path = Path(filename)
         match file_path.suffix:
             case ".json":

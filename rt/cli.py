@@ -1,19 +1,24 @@
-# rt.
-from json_helper import JsonToRichTable
-from yaml_helper import YamlToRichTable
-from csv_helper import CsvToRichTable
-from file_helper import FileToRichTable
+"""Main CLI module for rt.
+
+This module defines the cli options and arguments for rt.
+"""
+
+# misc.
+import sys
 
 # cli
-import typer
-from typing_extensions import Annotated
 from typing import Optional
+from typing_extensions import Annotated
+import typer
 
 # console and formatting
 from rich.console import Console
 
-# misc.
-import sys
+# project imports
+from rt.json_helper import JsonToRichTable
+from rt.yaml_helper import YamlToRichTable
+from rt.csv_helper import CsvToRichTable
+from rt.file_helper import FileToRichTable
 
 
 cli = typer.Typer(
@@ -38,7 +43,7 @@ for more info!
 or [bold]csv[/bold] into tables using the rich library.
     """,
 )
-def main(
+def main(  # pylint: disable=too-many-arguments
     is_json: Annotated[
         bool,
         typer.Option(
@@ -109,7 +114,17 @@ def main(
         ),
     ] = None,
 ):
-    """:sparkles: Convert json, yaml or csv into rich tables."""
+    """:sparkles: Convert json, yaml or csv into rich tables.
+
+    :param is_json: Bool flag to format json into rich tables
+    :param is_yaml: Bool flag to format yaml into rich tables
+    :param is_csv: Bool flag to format csv into rich tables
+    :param transpose: Bool flag to transpose the table output
+    :param suppress: Suppress highlighting
+    :param quiet: Suppress special keyword highlighting
+    :param rules: Add special highlighting ruels such as openstack, juju, etc...
+    :param file: Specify a file (file extension matters!)
+    """
     stdin_data = sys.stdin
     extra_options = {
         "transpose": transpose,
@@ -133,6 +148,7 @@ def main(
 
 
 def entrypoint() -> None:
+    """Entrypoint into cli of rt."""
     cli()
 
 
