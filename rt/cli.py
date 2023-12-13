@@ -2,10 +2,12 @@
 from json_helper import JsonToRichTable
 from yaml_helper import YamlToRichTable
 from csv_helper import CsvToRichTable
+from file_helper import FileToRichTable
 
 # cli
 import typer
 from typing_extensions import Annotated
+from typing import Optional
 
 # console and formatting
 from rich.console import Console
@@ -36,7 +38,7 @@ def main(
         typer.Option(
             "-j",
             "--json",
-            help="Format json into rich tables",
+            help="Format [bold]json[/bold] into rich tables",
         ),
     ] = False,
     is_yaml: Annotated[
@@ -44,7 +46,7 @@ def main(
         typer.Option(
             "-y",
             "--yaml",
-            help="Format yaml into rich tables",
+            help="Format [bold]yaml[/bold] into rich tables",
         ),
     ] = False,
     is_csv: Annotated[
@@ -52,15 +54,15 @@ def main(
         typer.Option(
             "-c",
             "--csv",
-            help="Format csv into rich tables",
+            help="Format [bold]csv[/bold] into rich tables",
         ),
     ] = False,
-    invert: Annotated[
+    transpose: Annotated[
         bool,
         typer.Option(
-            "-i",
-            "--invert",
-            help="Invert the table matrix output",
+            "-t",
+            "--transpose",
+            help="[bold]Transpose[/bold] the table output",
             rich_help_panel="Modifiers",
         ),
     ] = False,
@@ -82,16 +84,39 @@ def main(
             rich_help_panel="Modifiers",
         ),
     ] = False,
+    rules: Annotated[
+        str,
+        typer.Option(
+            "-r",
+            "--rules",
+            help="""
+            Add special highlighting ruels such as [bold blue]openstack[/bold blue],\n
+            [bold red]juju[/bold red], etc...
+            """,
+            rich_help_panel="Context Highlighting",
+        ),
+    ] = None,
+    file: Annotated[
+        Optional[str],
+        typer.Argument(
+            help="Specify a file ([bold]file extension matters![/bold])",
+        ),
+    ] = None,
 ):
     """
     :sparkles: A simple formatting cli that converts json, yaml and csv into tables using the rich library
     """
     stdin_data = sys.stdin
     extra_options = {
-        "invert": invert,
+        "transpose": transpose,
         "suppress": suppress,
+        "quiet": quiet,
+        "rules": rules,
     }
-    if is_json:
+    if file:
+        obj = FileToRichTable(**extra_options)
+        stdin_data = str(file)
+    elif is_json:
         obj = JsonToRichTable(**extra_options)
     elif is_yaml:
         obj = YamlToRichTable(**extra_options)
