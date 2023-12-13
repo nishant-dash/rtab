@@ -9,6 +9,7 @@ from typing_extensions import Annotated
 
 # console and formatting
 from rich.console import Console
+from rich.pretty import pprint
 
 # misc.
 import sys
@@ -26,7 +27,9 @@ cli = typer.Typer(
 console = Console()
 
 
-@cli.command()
+@cli.command(
+    epilog="Visit :link: [green underline]https://github.com/nishant-dash/rt[/green underline] for more info!"
+)
 def main(
     is_json: Annotated[
         bool,
@@ -58,6 +61,16 @@ def main(
             "-i",
             "--invert",
             help="Invert the table matrix output",
+            rich_help_panel="Transformers",
+        ),
+    ] = False,
+    suppress: Annotated[
+        bool,
+        typer.Option(
+            "-s",
+            "--suppress",
+            help="Suppress highlighting",
+            rich_help_panel="Transformers",
         ),
     ] = False,
 ):
@@ -67,6 +80,7 @@ def main(
     stdin_data = sys.stdin
     extra_options = {
         "invert": invert,
+        "suppress": suppress,
     }
     if is_json:
         obj = JsonToRichTable(**extra_options)
