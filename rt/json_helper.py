@@ -1,6 +1,7 @@
 """Load json data from stdin or file handler and print a rich table."""
 
 import json
+
 from rich.console import Console
 
 # project deps
@@ -13,7 +14,7 @@ console = Console()
 class JsonToRichTable(BaseToRichTable):
     """This class inherits BaseToRichTable and loads json data to print a rich table out of."""
 
-    def load(self, data) -> {}:  # pylint: disable=missing-type-doc
+    def load(self, data) -> dict:  # pylint: disable=missing-type-doc
         """Load json data from stdin or file handler.
 
         :param data: Can be either a string or file handler, used to load data from

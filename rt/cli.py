@@ -3,23 +3,17 @@
 This module defines the cli options and arguments for rt.
 """
 
-# misc.
 import sys
-
-# cli
 from typing import Optional
-from typing_extensions import Annotated
+
 import typer
-
-# console and formatting
 from rich.console import Console
+from typing_extensions import Annotated
 
-# project imports
-from rt.json_helper import JsonToRichTable
-from rt.yaml_helper import YamlToRichTable
 from rt.csv_helper import CsvToRichTable
 from rt.file_helper import FileToRichTable
-
+from rt.json_helper import JsonToRichTable
+from rt.yaml_helper import YamlToRichTable
 
 cli = typer.Typer(
     name="rt",
@@ -144,7 +138,7 @@ def main(  # pylint: disable=too-many-arguments
     else:
         console.print("[red]Unsupported![/red]")
         return
-    obj.run(stdin_data)
+    obj.run(stdin_data)  # type: ignore[arg-type]
 
 
 def entrypoint() -> None:

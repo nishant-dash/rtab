@@ -2,9 +2,9 @@
 
 from abc import abstractmethod
 
+from rich import box
 from rich.console import Console
 from rich.table import Table
-from rich import box
 
 # Initialize console object for print
 console = Console()
@@ -13,25 +13,25 @@ console = Console()
 class BaseToRichTable:
     """Base class to defines a layout of loading and printing rich table data."""
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
         """Initialize input dict as class attributes."""
         for k, v in kwargs.items():
             setattr(self, k, v)
 
     @abstractmethod
-    def load(self, data) -> {}:  # pylint: disable=missing-type-doc
+    def load(self, data) -> dict:  # pylint: disable=missing-type-doc
         """Load data in from a file or variable.
 
         :param data: Can be either a string or file handler, used to load data from
         """
         return
 
-    def create_table(self) -> Table():
+    def create_table(self) -> Table:
         """Create a rich table object."""
         # pylint: disable=maybe-no-member
         return Table(box=box.ROUNDED, highlight=not self.suppress)
 
-    def pre_run(self, stdin_data, skip_load: str = False):  # pylint: disable=missing-type-doc
+    def pre_run(self, stdin_data, skip_load: bool = False):  # pylint: disable=missing-type-doc
         """Do some basic checks and return loaded data.
 
         :param stdin_data: Can be either a string or file handler, used to load data from
@@ -46,7 +46,7 @@ class BaseToRichTable:
             console.print(f"Can not load stdin into {type(self).__name__}")
         return data, type(data)
 
-    def run(self, stdin_data, skip_load: str = False) -> None:  # pylint: disable=missing-type-doc
+    def run(self, stdin_data, skip_load: bool = False) -> None:  # pylint: disable=missing-type-doc
         """Load stdin as json and transform into rich table.
 
         :param stdin_data: Can be either a string or file handler, used to load data from

@@ -1,11 +1,12 @@
 """Load data from a file and print a rich table."""
 
 from pathlib import Path
+
 from rich.console import Console
 
+from rt.csv_helper import CsvToRichTable
 from rt.json_helper import JsonToRichTable
 from rt.yaml_helper import YamlToRichTable
-from rt.csv_helper import CsvToRichTable
 
 # Initialize console object for print
 console = Console()
@@ -19,7 +20,7 @@ class FileToRichTable:
         self.options = kwargs
         self.obj = None
 
-    def load(self, filename: str) -> {}:  # pylint: disable=missing-type-doc
+    def load(self, filename: str) -> dict:  # pylint: disable=missing-type-doc
         """Load data from filename using extrapolated object based on file extension.
 
         :param filename: Name of the file to load data from

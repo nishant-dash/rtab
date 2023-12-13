@@ -1,6 +1,7 @@
 """Load csv data from stdin or file handler and print a rich table."""
 
 import csv
+
 from rich.console import Console
 
 # project deps
@@ -13,7 +14,7 @@ console = Console()
 class CsvToRichTable(BaseToRichTable):
     """This class inherits BaseToRichTable and loads csv data to print a rich table out of."""
 
-    def load(self, data) -> []:  # pylint: disable=missing-type-doc
+    def load(self, data) -> list:  # type: ignore[override] # pylint: disable=missing-type-doc
         """Load data as csv, i.e, a list of list of strings.
 
         :param data: Can be either a string or file handler, used to load data from
@@ -28,7 +29,7 @@ class CsvToRichTable(BaseToRichTable):
             return None
         return loaded_data
 
-    def run(self, stdin_data, skip_load: str = False) -> None:  # pylint: disable=missing-type-doc
+    def run(self, stdin_data, skip_load: bool = False) -> None:  # pylint: disable=missing-type-doc
         """Load stdin as csv data and transform into rich table.
 
         :param stdin_data: Can be either a string or file handler, used to load data from

@@ -13,7 +13,7 @@ console = Console()
 class YamlToRichTable(BaseToRichTable):
     """This class inherits BaseToRichTable and loads yaml data to print a rich table out of."""
 
-    def load(self, data) -> {}:  # pylint: disable=missing-type-doc
+    def load(self, data) -> dict:  # pylint: disable=missing-type-doc
         """Load yaml data from stdin or file handler.
 
         :param data: Can be either a string or file handler, used to load data from
