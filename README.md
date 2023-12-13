@@ -23,3 +23,10 @@ something --format csv | rt -c
 openstack server list -fjson | rt -j
 openstack server list -fcsv | rt -c
 ```
+
+For example:
+- without rt
+![without_rt](/png/without_rt.png)
+
+- with rt
+![with_rt](/png/with_rt.png)
