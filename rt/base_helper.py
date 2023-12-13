@@ -1,25 +1,18 @@
-import csv
 from rich.console import Console
 from rich.table import Table
 from rich import box
-
-# project deps
-from base_helper import BaseToRichTable
 
 # Initialize console object for print
 console = Console()
 
 
-class CsvToRichTable(BaseToRichTable):
-    def load(self, data) -> []:
-        # @TODO try playing with Dictreader?
-        loaded_data = []
-        try:
-            for line in csv.reader(data.readlines()):
-                loaded_data.append(line)
-        except Exception as error:
-            console.print(error)
-            return None
+class BaseToRichTable:
+    def __init__(self, **kwargs):
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+
+    def load(self, data) -> {}:
+        loaded_data = None
         return loaded_data
 
     def run(self, stdin_data) -> None:
@@ -35,12 +28,20 @@ class CsvToRichTable(BaseToRichTable):
         td = type(data)
         columns = None
 
+        # List Logic
         if td == list:
-            columns = [k for k in data[0]]
+            columns = [k for k in data[0].keys()]
             for c in columns:
                 table.add_column(c)
-            for r in data[1:]:
-                table.add_row(*r)
+            for r in data:
+                temp_row = [str(v) for v in r.values()]
+                table.add_row(*temp_row)
+        elif td == dict:
+            # Show Logic
+            table.add_column("Key")
+            table.add_column("Value")
+            for k, v in data.items():
+                table.add_row(k, str(v))
         else:
             console.print(f"Unsupported type {td}")
             return None
