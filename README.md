@@ -1,5 +1,5 @@
-# rt
-A simple formatting cli that converts json, yaml and csv into tables using the [rich](https://github.com/Textualize/rich) library
+# ![rt_logo](/png/rt_logo.png) rt
+A simple formatting cli that converts json, yaml or csv into tables using the [rich](https://github.com/Textualize/rich) library
 
 rt stands for Rich Tabulator
 
