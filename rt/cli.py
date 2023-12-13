@@ -61,7 +61,7 @@ def main(
             "-i",
             "--invert",
             help="Invert the table matrix output",
-            rich_help_panel="Transformers",
+            rich_help_panel="Modifiers",
         ),
     ] = False,
     suppress: Annotated[
@@ -70,7 +70,16 @@ def main(
             "-s",
             "--suppress",
             help="Suppress highlighting",
-            rich_help_panel="Transformers",
+            rich_help_panel="Modifiers",
+        ),
+    ] = False,
+    quiet: Annotated[
+        bool,
+        typer.Option(
+            "-q",
+            "--quiet",
+            help="Suppress special keyword highlighting",
+            rich_help_panel="Modifiers",
         ),
     ] = False,
 ):

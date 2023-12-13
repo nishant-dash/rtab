@@ -15,6 +15,9 @@ class BaseToRichTable:
         loaded_data = None
         return loaded_data
 
+    def create_table(self) -> Table():
+        return Table(box=box.ROUNDED, highlight=not self.suppress)
+
     def run(self, stdin_data) -> None:
         """
         Load stdin as json and transform into rich table
@@ -24,7 +27,7 @@ class BaseToRichTable:
             console.print(f"Can not load stdin into {type(self).__name__}")
 
         # Initialize table object and misc.
-        table = Table(box=box.ROUNDED, highlight=True)
+        table = self.create_table()
         td = type(data)
         columns = None
 

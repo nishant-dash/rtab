@@ -31,7 +31,7 @@ class CsvToRichTable(BaseToRichTable):
             console.print(f"Can not load stdin into {type(self).__name__}")
 
         # Initialize table object and misc.
-        table = Table(box=box.ROUNDED, highlight=True)
+        table = self.create_table()
         td = type(data)
         columns = None
 
