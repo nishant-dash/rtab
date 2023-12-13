@@ -1,6 +1,8 @@
 # rt
 A simple formatting cli that converts json, yaml and csv into tables using the [rich](https://github.com/Textualize/rich) library
 
+rt stands for Rich Tabulator
+
 # Installation
 ```bash
 sudo snap install rt
