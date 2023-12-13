@@ -1,0 +1,3 @@
+#!/bin/sh
+# Wrapper for snap deployment.
+exec "$SNAP/bin/rt" "$@"

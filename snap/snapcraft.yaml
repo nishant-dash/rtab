@@ -1,0 +1,40 @@
+name: rt
+base: core22
+adopt-info: rt
+summary: A simple formatting cli that converts json, yaml and csv into tables using the rich library
+license: MIT
+description: |
+  A simple formatting cli that converts json, yaml and csv into tables using the rich library
+
+grade: devel
+confinement: strict
+
+apps:
+  rt:
+    command: bin/rt.wrapper
+    plugs:
+      - home
+
+parts:
+  rt-wrapper:
+    plugin: dump
+    source: bin
+    organize:
+      rt.wrapper: bin/rt.wrapper
+
+  rt:
+    plugin: python
+    build-packages:
+      - python3-wheel
+      - python3-pip
+      - python3-setuptools-scm
+    source: .
+    stage-packages:
+      - git
+    override-build: |
+      craftctl default
+      set -e
+      # set version
+      VERSION=$(python3 setup.py --version)
+      echo "Version: ${VERSION}"
+      craftctl set version=${VERSION}
