@@ -1,3 +1,7 @@
+# This is a template `.gitignore` file for snaps
+# This file is managed by bootstack-charms-spec and should not be modified
+# within individual snap repos. https://launchpad.net/bootstack-charms-spec
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -38,4 +42,4 @@ dist/
 .build/
 build/
 
-#tests/test_data/*
+# tests/test_data/*

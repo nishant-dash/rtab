@@ -45,6 +45,7 @@ ignore-paths = [
     ".build",
     "build",
     "report",
+    "tests"
 ]
 no-docstring-rgx = "__.*__"
 default-docstring-type = "sphinx"
@@ -68,14 +69,24 @@ exclude = [
     "build",
     "lib",
     "report",
+    "tests"
 ]
 
 [tool.coverage.run]
 relative_files = true
 concurrency = ["gevent"]
 source = ["."]
-omit = ["lib/**", "snap/**", "build/**", "setup.py"]
+omit = ["tests/**", "docs/**", "lib/**", "snap/**", "build/**", "setup.py"]
 
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+
+[tool.coverage.html]
+directory = "tests/unit/report/html"
+
+[tool.coverage.xml]
+output = "tests/unit/report/coverage.xml"
 
 [tool.codespell]
 skip = ".eggs,.tox,.git,.venv,venv,build,.build,lib,report"
@@ -86,5 +97,3 @@ check-filenames = true
 filterwarnings = [
     "ignore::RuntimeWarning",
 ]
-
-
