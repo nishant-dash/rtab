@@ -1,7 +1,8 @@
-# ![rt_logo](/png/rt_logo.png)
-A simple formatting cli that converts json, yaml or csv into tables using the [rich](https://github.com/Textualize/rich) library
+![rt_logo](/png/rt_logo.png)
 
-rt stands for Rich Tabulator
+# rt - Rich Tabulator
+
+A simple formatting cli that converts json, yaml or csv into tables using the [rich](https://github.com/Textualize/rich) library
 
 # Installation
 ```bash
@@ -30,3 +31,17 @@ For example:
 
 - with rt
 ![with_rt](/png/with_rt.png)
+
+
+# Building and Dev
+```bash
+# to build the snap
+make build
+
+# to install a local version of the snap
+sudo snap install rt.snap --dangerous
+
+# unittests, linting etc...
+make lint
+make unittests
+```
