@@ -1,7 +1,5 @@
 import csv
 from rich.console import Console
-from rich.table import Table
-from rich import box
 
 # project deps
 from base_helper import BaseToRichTable
@@ -12,6 +10,7 @@ console = Console()
 
 class CsvToRichTable(BaseToRichTable):
     def load(self, data) -> []:
+        """Load data as csv, i.e, a list of list of strings."""
         # @TODO try playing with Dictreader?
         loaded_data = []
         try:
@@ -23,9 +22,7 @@ class CsvToRichTable(BaseToRichTable):
         return loaded_data
 
     def run(self, stdin_data, skip_load: str = False) -> None:
-        """
-        Load stdin as json and transform into rich table
-        """
+        """Load stdin as csv data and transform into rich table."""
         if skip_load:
             data = stdin_data
         else:

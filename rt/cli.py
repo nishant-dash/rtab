@@ -11,7 +11,6 @@ from typing import Optional
 
 # console and formatting
 from rich.console import Console
-from rich.pretty import pprint
 
 # misc.
 import sys
@@ -30,7 +29,14 @@ console = Console()
 
 
 @cli.command(
-    epilog="Visit :link: [green underline]https://github.com/nishant-dash/rt[/green underline] for more info!"
+    epilog="""
+    Visit :link: [green underline]https://github.com/nishant-dash/rt[/green underline]
+for more info!
+    """,
+    help="""
+    :sparkles: A simple formatting cli that converts [bold]json[/bold], [bold]yaml[/bold]
+or [bold]csv[/bold] into tables using the rich library.
+    """,
 )
 def main(
     is_json: Annotated[
@@ -103,9 +109,7 @@ def main(
         ),
     ] = None,
 ):
-    """
-    :sparkles: A simple formatting cli that converts json, yaml and csv into tables using the rich library
-    """
+    """:sparkles: Convert json, yaml or csv into rich tables."""
     stdin_data = sys.stdin
     extra_options = {
         "transpose": transpose,

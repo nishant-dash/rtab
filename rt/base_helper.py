@@ -8,20 +8,21 @@ console = Console()
 
 class BaseToRichTable:
     def __init__(self, **kwargs):
+        """Initialize input dict as class attributes."""
         for k, v in kwargs.items():
             setattr(self, k, v)
 
     def load(self, data) -> {}:
+        """Load data in from a file or variable."""
         loaded_data = None
         return loaded_data
 
     def create_table(self) -> Table():
+        """Create a rich table object."""
         return Table(box=box.ROUNDED, highlight=not self.suppress)
 
     def run(self, stdin_data, skip_load: str = False) -> None:
-        """
-        Load stdin as json and transform into rich table
-        """
+        """Load stdin as json and transform into rich table."""
         if skip_load:
             data = stdin_data
         else:

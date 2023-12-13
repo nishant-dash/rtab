@@ -11,10 +11,12 @@ console = Console()
 
 class FileToRichTable:
     def __init__(self, **kwargs):
+        """Initialize inputs dict class variables."""
         self.options = kwargs
         self.obj = None
 
     def load(self, filename) -> {}:
+        """Load data from filename using extrapolated object based on file extension."""
         data = None
         try:
             with open(filename, "r") as f:
@@ -25,6 +27,7 @@ class FileToRichTable:
         return data
 
     def run(self, filename) -> None:
+        """Print rich table using extrapolated object based on file extension."""
         file_path = Path(filename)
         match file_path.suffix:
             case ".json":
