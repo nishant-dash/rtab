@@ -19,4 +19,5 @@ something --format csv | rt -c
 - Using with openstack cli
 ```bash
 openstack server list -fjson | rt -j
+openstack server list -fcsv | rt -c
 ```

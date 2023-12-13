@@ -1,7 +1,6 @@
 from pathlib import Path
 from rich.console import Console
 
-# project deps
 from json_helper import JsonToRichTable
 from yaml_helper import YamlToRichTable
 from csv_helper import CsvToRichTable
