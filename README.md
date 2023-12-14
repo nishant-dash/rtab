@@ -7,9 +7,7 @@
 <p align="center">A simple formatting cli that converts json, yaml or csv into tables using the <a href="https://github.com/Textualize/rich">rich</a> library.</p>
 
 
-# Installation
-
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/rich-tab)
+# Installation &nbsp;&nbsp;&nbsp;&nbsp; [![rich-tab](https://snapcraft.io/rich-tab/badge.svg)](https://snapcraft.io/rich-tab)
 
 ```bash
 sudo snap install rich-tab --edge
@@ -53,3 +51,12 @@ sudo snap install rt.snap --dangerous
 make lint
 make unittests
 ```
+
+<br>
+<br>
+
+<h1 align="center">
+<a href="https://snapcraft.io/rich-tab">
+  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a>
+</h1>
