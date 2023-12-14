@@ -34,7 +34,7 @@ class FileToRichTable:
             console.print(error)
         return data
 
-    def run(self, filename: str) -> None:
+    def run(self, filename: str) -> int:
         """Print rich table using extrapolated object based on file extension.
 
         :param filename: Name of the file to load data from
@@ -48,9 +48,9 @@ class FileToRichTable:
             case ".csv":
                 self.obj = CsvToRichTable(**self.options)
             case _:
-                self.obj = None
+                return 1
 
-        if self.obj:
-            loaded_data = self.load(filename)
-            if loaded_data:
-                self.obj.run(loaded_data, skip_load=True)
+        loaded_data = self.load(filename)
+        if loaded_data:
+            self.obj.run(loaded_data, skip_load=True)
+        return 0

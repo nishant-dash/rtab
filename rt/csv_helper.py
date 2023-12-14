@@ -29,7 +29,7 @@ class CsvToRichTable(BaseToRichTable):
             return None
         return loaded_data
 
-    def run(self, stdin_data, skip_load: bool = False) -> None:  # pylint: disable=missing-type-doc
+    def run(self, stdin_data, skip_load: bool = False) -> int:  # pylint: disable=missing-type-doc
         """Load stdin as csv data and transform into rich table.
 
         :param stdin_data: Can be either a string or file handler, used to load data from
@@ -37,7 +37,7 @@ class CsvToRichTable(BaseToRichTable):
         """
         data, data_type = self.pre_run(stdin_data, skip_load)
         if not data:
-            return
+            return 1
 
         # Initialize table object
         table = self.create_table()
@@ -48,7 +48,8 @@ class CsvToRichTable(BaseToRichTable):
             for row in data[1:]:
                 table.add_row(*row)
         else:
-            console.print(f"Unsupported type {data_type}")
-            return
+            console.print(f"Csv reader can't handle {data_type}")
+            return 1
 
         console.print(table)
+        return 0

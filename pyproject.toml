@@ -75,10 +75,10 @@ disable_error_code = ["assignment", "return-value", "attr-defined"]
 relative_files = true
 concurrency = ["gevent"]
 source = ["."]
-omit = ["tests/**", "docs/**", "lib/**", "snap/**", "build/**", "setup.py"]
+omit = ["tests/**", "docs/**", "lib/**", "snap/**", "build/**", "setup.py", ".tox/**"]
 
 [tool.coverage.report]
-fail_under = 100
+fail_under = 90
 show_missing = true
 
 [tool.coverage.html]

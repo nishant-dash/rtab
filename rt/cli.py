@@ -136,9 +136,10 @@ def main(  # pylint: disable=too-many-arguments
     elif is_csv:
         obj = CsvToRichTable(**extra_options)
     else:
-        console.print("[red]Unsupported![/red]")
-        return
+        console.print("[red]No file nor any one of json, yaml or csv chosen![/red]")
+        return 1
     obj.run(stdin_data)  # type: ignore[arg-type]
+    return 0
 
 
 def entrypoint() -> None:

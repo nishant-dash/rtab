@@ -46,7 +46,7 @@ class BaseToRichTable:
             console.print(f"Can not load stdin into {type(self).__name__}")
         return data, type(data)
 
-    def run(self, stdin_data, skip_load: bool = False) -> None:  # pylint: disable=missing-type-doc
+    def run(self, stdin_data, skip_load: bool = False) -> int:  # pylint: disable=missing-type-doc
         """Load stdin as json and transform into rich table.
 
         :param stdin_data: Can be either a string or file handler, used to load data from
@@ -54,7 +54,7 @@ class BaseToRichTable:
         """
         data, data_type = self.pre_run(stdin_data, skip_load)
         if not data:
-            return
+            return 1
 
         # Initialize table object
         table = self.create_table()
@@ -75,6 +75,7 @@ class BaseToRichTable:
                 table.add_row(*temp_row)
         else:
             console.print(f"Unsupported type {data_type}")
-            return
+            return 1
 
         console.print(table)
+        return 0
