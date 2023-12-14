@@ -51,5 +51,5 @@ def test_file_cli(fn):
 def test_plain_cli():
     runner = CliRunner()
     result = runner.invoke(cli.cli)
-    assert result.exit_code == 0
+    assert result.exit_code == 1
     assert "No file nor any one of json, yaml or csv chosen!" in result.stdout

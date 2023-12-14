@@ -119,6 +119,7 @@ def main(  # pylint: disable=too-many-arguments
     :param quiet: Suppress special keyword highlighting
     :param rules: Add special highlighting ruels such as openstack, juju, etc...
     :param file: Specify a file (file extension matters!)
+    :raises Exit: 1 if no defining input is provided
     """
     stdin_data = sys.stdin
     extra_options = {
@@ -138,7 +139,7 @@ def main(  # pylint: disable=too-many-arguments
         obj = CsvToRichTable(**extra_options)
     else:
         console.print("[red]No file nor any one of json, yaml or csv chosen![/red]")
-        return 1
+        raise typer.Exit(code=1)
     obj.run(stdin_data)  # type: ignore[arg-type]
     return 0
 
