@@ -1,4 +1,4 @@
-name: rt
+name: rich-tab
 base: core22
 adopt-info: rt
 summary: Convert json, yaml or csv into tables using the rich library
@@ -12,6 +12,7 @@ confinement: strict
 apps:
   rt:
     command: bin/rt.wrapper
+    aliases: [rt]
     plugs:
       - home
 

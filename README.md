@@ -7,13 +7,12 @@
 <p align="center">A simple formatting cli that converts json, yaml or csv into tables using the <a href="https://github.com/Textualize/rich">rich</a> library.</p>
 
 
-<!-- # ![rt_logo](/png/rt_40_40.png) &nbsp;&nbsp; rt - Rich Tabulator
-
-A simple formatting cli that converts json, yaml or csv into tables using the [rich](https://github.com/Textualize/rich) library -->
-
 # Installation
+
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/rich-tab)
+
 ```bash
-sudo snap install rt
+sudo snap install rich-tab --edge
 ```
 
 # Usage
