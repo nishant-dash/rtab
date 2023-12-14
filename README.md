@@ -7,7 +7,7 @@
 <p align="center">A simple formatting cli that converts json, yaml or csv into tables using the <a href="https://github.com/Textualize/rich">rich</a> library.</p>
 
 
-<!-- # ![rt_logo](/png/rt_40_40.png) &nbsp;&nbsp; rt - Rich Tabulator  
+<!-- # ![rt_logo](/png/rt_40_40.png) &nbsp;&nbsp; rt - Rich Tabulator
 
 A simple formatting cli that converts json, yaml or csv into tables using the [rich](https://github.com/Textualize/rich) library -->
 
