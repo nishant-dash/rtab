@@ -147,7 +147,3 @@ def main(  # pylint: disable=too-many-arguments
 def entrypoint() -> None:
     """Entrypoint into cli of rt."""
     cli()
-
-
-if __name__ == "__main__":
-    entrypoint()
