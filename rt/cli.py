@@ -36,6 +36,7 @@ for more info!
     :sparkles: A simple formatting cli that converts [bold]json[/bold], [bold]yaml[/bold]
 or [bold]csv[/bold] into tables using the rich library.
     """,
+    # no_args_is_help=True,
 )
 def main(  # pylint: disable=too-many-arguments
     is_json: Annotated[

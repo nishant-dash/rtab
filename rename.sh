@@ -1,3 +1,4 @@
+#!/bin/bash
 snap=$(grep -E "^name:" snap/snapcraft.yaml | awk '{print $2}')
 echo "renaming ${snap}_*.snap to ${snap}.snap"
 echo -n "pwd: "
