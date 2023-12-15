@@ -23,9 +23,9 @@ def find_version() -> str:
         commits_count: str = (
             subprocess.check_output(cmde, stderr=subprocess.DEVNULL).decode().strip()
         )
-        return f"0.0.dev{commits_count}"
+        return f"0.1.dev{commits_count}"
     except subprocess.CalledProcessError:
-        return "0.0.dev0"
+        return "0.1.dev0"
 
 
 setup(version=find_version())
