@@ -29,7 +29,7 @@ class BaseToRichTable:
     def create_table(self) -> Table:
         """Create a rich table object."""
         # pylint: disable=maybe-no-member
-        return Table(box=box.ROUNDED, highlight=not self.suppress)
+        return Table(box=box.ROUNDED, highlight=not self.quiet)
 
     def pre_run(self, stdin_data, skip_load: bool = False):  # pylint: disable=missing-type-doc
         """Do some basic checks and return loaded data.

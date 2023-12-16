@@ -63,21 +63,12 @@ def main(  # pylint: disable=too-many-arguments
             help="Format [bold]csv[/bold] into rich tables",
         ),
     ] = False,
-    suppress: Annotated[
-        bool,
-        typer.Option(
-            "-s",
-            "--suppress",
-            help="Suppress highlighting",
-            rich_help_panel="Modifiers",
-        ),
-    ] = False,
     quiet: Annotated[
         bool,
         typer.Option(
             "-q",
             "--quiet",
-            help="Suppress special keyword highlighting",
+            help="Suppress highlighting",
             rich_help_panel="Modifiers",
         ),
     ] = False,
@@ -105,15 +96,13 @@ def main(  # pylint: disable=too-many-arguments
     :param is_json: Bool flag to format json into rich tables
     :param is_yaml: Bool flag to format yaml into rich tables
     :param is_csv: Bool flag to format csv into rich tables
-    :param suppress: Suppress highlighting
-    :param quiet: Suppress special keyword highlighting
+    :param quiet: Suppress highlighting
     :param rules: Add special highlighting ruels such as openstack, juju, etc...
     :param file: Specify a file (file extension matters!)
     :raises Exit: 1 if no defining input is provided
     """
     stdin_data = sys.stdin
     extra_options = {
-        "suppress": suppress,
         "quiet": quiet,
         "rules": rules,
     }
