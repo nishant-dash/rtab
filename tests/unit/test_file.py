@@ -28,6 +28,6 @@ def test_file_types(mode):
     ],
 )
 def test_file_types_with_failure(mode, mock_ret_value):
-    obj = FileToRichTable(**{"quiet": False})
+    obj = FileToRichTable(**{"quiet": False, "separator": ","})
     ret = obj.run(f"tests/resources/test.{mode}")
     assert ret == mock_ret_value

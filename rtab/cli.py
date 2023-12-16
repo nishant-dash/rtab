@@ -72,6 +72,16 @@ def main(  # pylint: disable=too-many-arguments
             rich_help_panel="Modifiers",
         ),
     ] = False,
+    separator: Annotated[
+        str,
+        typer.Option(
+            "-s",
+            "--separator",
+            help="Specify an input separator, only applies with csv input '[bold]-c[/bold]'",
+            rich_help_panel="Modifiers",
+            show_default=False,
+        ),
+    ] = None,
     rules: Annotated[
         str,
         typer.Option(
@@ -97,6 +107,7 @@ def main(  # pylint: disable=too-many-arguments
     :param is_yaml: Bool flag to format yaml into rich tables
     :param is_csv: Bool flag to format csv into rich tables
     :param quiet: Suppress highlighting
+    :param separator: Specify a separator, only applies with table input '-t'
     :param rules: Add special highlighting ruels such as openstack, juju, etc...
     :param file: Specify a file (file extension matters!)
     :raises Exit: 1 if no defining input is provided
@@ -104,6 +115,7 @@ def main(  # pylint: disable=too-many-arguments
     stdin_data = sys.stdin
     extra_options = {
         "quiet": quiet,
+        "separator": separator,
         "rules": rules,
     }
     if file:

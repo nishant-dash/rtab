@@ -22,8 +22,16 @@ class CsvToRichTable(BaseToRichTable):
         # @TODO try playing with Dictreader?
         loaded_data = []
         try:
+            # pylint: disable=maybe-no-member
             for line in csv.reader(data.readlines()):
-                loaded_data.append(line)
+                formatted_line = []
+                for elem in line:
+                    formatted_elem = " ".join(elem.split())
+                    elem_to_add = [formatted_elem]
+                    if self.separator:
+                        elem_to_add = formatted_elem.split(self.separator)
+                    formatted_line.extend(elem_to_add)
+                loaded_data.append(formatted_line)
         except IOError as error:
             console.print(error)
             return None

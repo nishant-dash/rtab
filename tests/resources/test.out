@@ -1,0 +1,50 @@
+NAME                                             READY   STATUS    RESTARTS        AGE   IP            NODE              NOMINATED NODE   READINESS GATES
+modeloperator-7548d85bfb-rtsz4                   1/1     Running   0               18d   10.1.97.92    test-1-ohkei2ad   <none>           <none>
+metacontroller-operator-charm-0                  1/1     Running   0               16d   10.1.97.59    test-1-ohkei2ad   <none>           <none>
+kubeflow-volumes-577cd546c4-vbh6l                1/1     Running   0               16d   10.1.97.65    test-1-ohkei2ad   <none>           <none>
+katib-controller-6bdd569b9f-k5z2v                1/1     Running   0               16d   10.1.97.68    test-1-ohkei2ad   <none>           <none>
+kubeflow-volumes-operator-0                      1/1     Running   0               16d   10.1.97.5     test-1-ohkei2ad   <none>           <none>
+envoy-6b5f46869b-h2psg                           1/1     Running   0               16d   10.1.97.64    test-1-ohkei2ad   <none>           <none>
+katib-controller-operator-0                      1/1     Running   0               16d   10.1.97.15    test-1-ohkei2ad   <none>           <none>
+minio-operator-0                                 1/1     Running   0               16d   10.1.97.29    test-1-ohkei2ad   <none>           <none>
+mlmd-operator-0                                  1/1     Running   0               16d   10.1.97.30    test-1-ohkei2ad   <none>           <none>
+envoy-operator-0                                 1/1     Running   0               16d   10.1.97.17    test-1-ohkei2ad   <none>           <none>
+argo-controller-operator-0                       1/1     Running   0               16d   10.1.97.66    test-1-ohkei2ad   <none>           <none>
+minio-0                                          1/1     Running   0               12d   10.1.97.24    test-1-ohkei2ad   <none>           <none>
+argo-controller-7c689997d5-hzhjw                 1/1     Running   2 (9d ago)      16d   10.1.97.67    test-1-ohkei2ad   <none>           <none>
+pvcviewer-operator-0                             3/3     Running   0               16d   10.1.97.21    test-1-ohkei2ad   <none>           <none>
+oidc-gatekeeper-0                                2/2     Running   0               16d   10.1.97.11    test-1-ohkei2ad   <none>           <none>
+kfp-persistence-0                                2/2     Running   0               16d   10.1.97.61    test-1-ohkei2ad   <none>           <none>
+tensorboard-controller-0                         2/2     Running   0               16d   10.1.97.111   test-1-ohkei2ad   <none>           <none>
+knative-operator-0                               3/3     Running   0               16d   10.1.97.33    test-1-ohkei2ad   <none>           <none>
+istio-ingressgateway-workload-79846ddf98-vjrf7   1/1     Running   0               16d   10.1.97.51    test-1-ohkei2ad   <none>           <none>
+seldon-controller-manager-0                      2/2     Running   0               16d   10.1.97.18    test-1-ohkei2ad   <none>           <none>
+metacontroller-operator-0                        1/1     Running   1 (12d ago)     16d   10.1.97.42    test-1-ohkei2ad   <none>           <none>
+kserve-controller-0                              3/3     Running   0               16d   10.1.97.82    test-1-ohkei2ad   <none>           <none>
+kfp-viz-0                                        2/2     Running   0               16d   10.1.97.73    test-1-ohkei2ad   <none>           <none>
+jupyter-controller-0                             2/2     Running   0               16d   10.1.97.13    test-1-ohkei2ad   <none>           <none>
+knative-serving-0                                1/1     Running   0               16d   10.1.97.8     test-1-ohkei2ad   <none>           <none>
+knative-eventing-0                               1/1     Running   0               16d   10.1.97.40    test-1-ohkei2ad   <none>           <none>
+mlmd-0                                           1/1     Running   0               16d   10.1.97.63    test-1-ohkei2ad   <none>           <none>
+jupyter-ui-0                                     2/2     Running   0               16d   10.1.97.58    test-1-ohkei2ad   <none>           <none>
+training-operator-0                              2/2     Running   0               12d   10.1.97.50    test-1-ohkei2ad   <none>           <none>
+grafana-agent-k8s-0                              2/2     Running   0               16d   10.1.97.112   test-1-ohkei2ad   <none>           <none>
+istio-pilot-0                                    1/1     Running   0               16d   10.1.97.41    test-1-ohkei2ad   <none>           <none>
+kfp-metadata-writer-0                            2/2     Running   0               16d   10.1.97.43    test-1-ohkei2ad   <none>           <none>
+kfp-profile-controller-0                         2/2     Running   0               16d   10.1.97.71    test-1-ohkei2ad   <none>           <none>
+istiod-8998b9688-rmfv6                           1/1     Running   0               16d   10.1.97.20    test-1-ohkei2ad   <none>           <none>
+kfp-viewer-0                                     2/2     Running   1 (2d16h ago)   16d   10.1.97.6     test-1-ohkei2ad   <none>           <none>
+tensorboards-web-app-0                           2/2     Running   1 (2d7h ago)    16d   10.1.97.78    test-1-ohkei2ad   <none>           <none>
+istio-ingressgateway-0                           1/1     Running   1 (2d7h ago)    16d   10.1.97.31    test-1-ohkei2ad   <none>           <none>
+dex-auth-0                                       2/2     Running   1               16d   10.1.97.52    test-1-ohkei2ad   <none>           <none>
+katib-db-manager-0                               2/2     Running   1 (2d7h ago)    16d   10.1.97.14    test-1-ohkei2ad   <none>           <none>
+kubeflow-dashboard-0                             2/2     Running   1               16d   10.1.97.47    test-1-ohkei2ad   <none>           <none>
+kubeflow-roles-0                                 1/1     Running   1 (2d7h ago)    16d   10.1.97.16    test-1-ohkei2ad   <none>           <none>
+admission-webhook-0                              2/2     Running   2 (2d7h ago)    16d   10.1.97.3     test-1-ohkei2ad   <none>           <none>
+kubeflow-profiles-0                              3/3     Running   2 (2d7h ago)    16d   10.1.97.77    test-1-ohkei2ad   <none>           <none>
+kfp-api-0                                        2/2     Running   2 (2d7h ago)    16d   10.1.97.60    test-1-ohkei2ad   <none>           <none>
+katib-ui-0                                       2/2     Running   1 (2d7h ago)    16d   10.1.97.35    test-1-ohkei2ad   <none>           <none>
+kfp-schedwf-0                                    2/2     Running   0               16d   10.1.97.32    test-1-ohkei2ad   <none>           <none>
+kfp-ui-0                                         2/2     Running   4 (27h ago)     16d   10.1.97.54    test-1-ohkei2ad   <none>           <none>
+kfp-db-mysql-0                                   2/2     Running   38 (8h ago)     16d   10.1.97.39    test-1-ohkei2ad   <none>           <none>
+katib-db-mysql-0                                 2/2     Running   38 (8h ago)     16d   10.1.97.1     test-1-ohkei2ad   <none>           <none>
