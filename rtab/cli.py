@@ -1,6 +1,6 @@
-"""Main CLI module for rt.
+"""Main CLI module for rtab.
 
-This module defines the cli options and arguments for rt.
+This module defines the cli options and arguments for rtab.
 """
 
 import sys
@@ -10,13 +10,13 @@ import typer
 from rich.console import Console
 from typing_extensions import Annotated
 
-from rt.csv_helper import CsvToRichTable
-from rt.file_helper import FileToRichTable
-from rt.json_helper import JsonToRichTable
-from rt.yaml_helper import YamlToRichTable
+from rtab.csv_helper import CsvToRichTable
+from rtab.file_helper import FileToRichTable
+from rtab.json_helper import JsonToRichTable
+from rtab.yaml_helper import YamlToRichTable
 
 cli = typer.Typer(
-    name="rt",
+    name="rtab",
     rich_markup_mode="rich",
     add_completion=False,
     help="""
@@ -29,7 +29,7 @@ console = Console()
 
 @cli.command(
     epilog="""
-    Visit :link: [green underline]https://github.com/nishant-dash/rt[/green underline]
+    Visit :link: [green underline]https://github.com/nishant-dash/rtab[/green underline]
 for more info!
     """,
     help="""
@@ -61,15 +61,6 @@ def main(  # pylint: disable=too-many-arguments
             "-c",
             "--csv",
             help="Format [bold]csv[/bold] into rich tables",
-        ),
-    ] = False,
-    transpose: Annotated[
-        bool,
-        typer.Option(
-            "-t",
-            "--transpose",
-            help="[bold]Transpose[/bold] the table output",
-            rich_help_panel="Modifiers",
         ),
     ] = False,
     suppress: Annotated[
@@ -114,7 +105,6 @@ def main(  # pylint: disable=too-many-arguments
     :param is_json: Bool flag to format json into rich tables
     :param is_yaml: Bool flag to format yaml into rich tables
     :param is_csv: Bool flag to format csv into rich tables
-    :param transpose: Bool flag to transpose the table output
     :param suppress: Suppress highlighting
     :param quiet: Suppress special keyword highlighting
     :param rules: Add special highlighting ruels such as openstack, juju, etc...
@@ -123,7 +113,6 @@ def main(  # pylint: disable=too-many-arguments
     """
     stdin_data = sys.stdin
     extra_options = {
-        "transpose": transpose,
         "suppress": suppress,
         "quiet": quiet,
         "rules": rules,
@@ -145,5 +134,5 @@ def main(  # pylint: disable=too-many-arguments
 
 
 def entrypoint() -> None:
-    """Entrypoint into cli of rt."""
+    """Entrypoint into cli of rtab."""
     cli()

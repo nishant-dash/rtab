@@ -1,11 +1,11 @@
-"""Testing module for base class of rt."""
+"""Testing module for base class of rtab."""
 
 from unittest.mock import patch
 
 import pytest
 from rich.table import Table
 
-from rt.base_helper import BaseToRichTable
+from rtab.base_helper import BaseToRichTable
 
 
 def test_create_table():
@@ -48,7 +48,7 @@ def test_run_success(mock_data):
         (None, None),
     ],
 )
-@patch("rt.base_helper.BaseToRichTable.pre_run")
+@patch("rtab.base_helper.BaseToRichTable.pre_run")
 def test_run_failure(mock_pre_run, mock_ret_value, mock_ret_type):
     mock_pre_run.return_value = mock_ret_value, mock_ret_type
     obj = BaseToRichTable(**{"suppress": False})

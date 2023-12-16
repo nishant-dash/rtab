@@ -1,11 +1,11 @@
-"""Testing module for file input capabilities of rt."""
+"""Testing module for file input capabilities of rtab."""
 
 from unittest.mock import patch
 
 import pytest
 
-from rt import cli
-from rt.file_helper import FileToRichTable
+from rtab import cli
+from rtab.file_helper import FileToRichTable
 
 
 @pytest.mark.parametrize(
@@ -13,7 +13,7 @@ from rt.file_helper import FileToRichTable
     [("Json"), ("Yaml"), ("Csv")],
 )
 def test_file_types(mode):
-    with patch(f"rt.{mode.lower()}_helper.{mode}ToRichTable.load") as mocker:
+    with patch(f"rtab.{mode.lower()}_helper.{mode}ToRichTable.load") as mocker:
         cli.main(file=f"tests/resources/test.{mode.lower()}")
         mocker.assert_called_once()
 

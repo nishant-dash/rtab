@@ -1,6 +1,6 @@
-"""Testing module for yaml capabilities of rt."""
+"""Testing module for yaml capabilities of rtab."""
 
-from rt.yaml_helper import YamlToRichTable
+from rtab.yaml_helper import YamlToRichTable
 
 
 def test_read_yaml():

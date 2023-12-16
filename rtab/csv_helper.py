@@ -5,7 +5,7 @@ import csv
 from rich.console import Console
 
 # project deps
-from rt.base_helper import BaseToRichTable
+from rtab.base_helper import BaseToRichTable
 
 # Initialize console object for print
 console = Console()

@@ -1,5 +1,5 @@
 """Main entry point."""
-from rt.cli import entrypoint
+from rtab.cli import entrypoint
 
 
 def main() -> None:

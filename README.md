@@ -1,7 +1,7 @@
 <h1 align="center">
-  <img src="./png/rt_logo.png" alt="rt" width="60px">
+  <img src="./png/rtab_logo.png" alt="rtab" width="60px">
   <br />
-  rt - Rich Tabulator
+  rtab - Rich Tabulator
 </h1>
 
 <p align="center">A simple formatting cli that converts json, yaml or csv into tables using the <a href="https://github.com/Textualize/rich">rich</a> library.</p>
@@ -15,9 +15,9 @@ sudo snap install rich-tab --edge
 
 # Usage
 ```bash
-something --format json | rt -j
-something --format yaml | rt -y
-something --format csv | rt -c
+something --format json | rtab -j
+something --format yaml | rtab -y
+something --format csv | rtab -c
 ```
 
 ### You can get creative with this and use it to pretty print various existing tools
@@ -27,16 +27,16 @@ something --format csv | rt -c
 
 - Using with openstack cli
 ```bash
-openstack server list -fjson | rt -j
-openstack server list -fcsv | rt -c
+openstack server list -fjson | rtab -j
+openstack server list -fcsv | rtab -c
 ```
 
 For example:
-- without rt
-![without_rt](/png/without_rt.png)
+- without rtab
+![without_rtab](/png/without_rtab.png)
 
-- with rt
-![with_rt](/png/with_rt.png)
+- with rtab
+![with_rtab](/png/with_rtab.png)
 
 
 # Building and Dev
@@ -45,7 +45,7 @@ For example:
 make build
 
 # to install a local version of the snap
-sudo snap install rt.snap --dangerous
+sudo snap install rtab.snap --dangerous
 
 # unittests, linting etc...
 make lint

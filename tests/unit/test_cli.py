@@ -1,11 +1,11 @@
-"""Testing module for cli of rt."""
+"""Testing module for cli of rtab."""
 
 from unittest.mock import patch
 
 import pytest
 from typer.testing import CliRunner
 
-from rt import cli
+from rtab import cli
 
 
 @pytest.mark.parametrize(
@@ -13,7 +13,7 @@ from rt import cli
     [("load"), ("run")],
 )
 def test_json_cli(fn):
-    with patch(f"rt.json_helper.JsonToRichTable.{fn}") as mocker:
+    with patch(f"rtab.json_helper.JsonToRichTable.{fn}") as mocker:
         cli.main(is_json=True)
         mocker.assert_called_once()
 
@@ -23,7 +23,7 @@ def test_json_cli(fn):
     [("load"), ("run")],
 )
 def test_yaml_cli(fn):
-    with patch(f"rt.yaml_helper.YamlToRichTable.{fn}") as mocker:
+    with patch(f"rtab.yaml_helper.YamlToRichTable.{fn}") as mocker:
         cli.main(is_yaml=True)
         mocker.assert_called_once()
 
@@ -33,7 +33,7 @@ def test_yaml_cli(fn):
     [("load"), ("run")],
 )
 def test_csv_cli(fn):
-    with patch(f"rt.csv_helper.CsvToRichTable.{fn}") as mocker:
+    with patch(f"rtab.csv_helper.CsvToRichTable.{fn}") as mocker:
         cli.main(is_csv=True)
         mocker.assert_called_once()
 
@@ -43,7 +43,7 @@ def test_csv_cli(fn):
     [("load"), ("run")],
 )
 def test_file_cli(fn):
-    with patch(f"rt.file_helper.FileToRichTable.{fn}") as mocker:
+    with patch(f"rtab.file_helper.FileToRichTable.{fn}") as mocker:
         cli.main(file="tests/resources/test.csv")
         mocker.assert_called_once()
 

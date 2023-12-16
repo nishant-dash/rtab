@@ -1,6 +1,6 @@
-"""Testing module for json capabilities of rt."""
+"""Testing module for json capabilities of rtab."""
 
-from rt.json_helper import JsonToRichTable
+from rtab.json_helper import JsonToRichTable
 
 
 def test_read_json():

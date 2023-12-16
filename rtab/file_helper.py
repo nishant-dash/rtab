@@ -4,9 +4,9 @@ from pathlib import Path
 
 from rich.console import Console
 
-from rt.csv_helper import CsvToRichTable
-from rt.json_helper import JsonToRichTable
-from rt.yaml_helper import YamlToRichTable
+from rtab.csv_helper import CsvToRichTable
+from rtab.json_helper import JsonToRichTable
+from rtab.yaml_helper import YamlToRichTable
 
 # Initialize console object for print
 console = Console()

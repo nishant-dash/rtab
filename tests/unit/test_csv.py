@@ -1,10 +1,10 @@
-"""Testing module for csv capabilities of rt."""
+"""Testing module for csv capabilities of rtab."""
 
 from unittest.mock import patch
 
 import pytest
 
-from rt.csv_helper import CsvToRichTable
+from rtab.csv_helper import CsvToRichTable
 
 
 def test_load_csv():
@@ -29,7 +29,7 @@ def test_run_csv():
         (None, None),
     ],
 )
-@patch("rt.csv_helper.CsvToRichTable.pre_run")
+@patch("rtab.csv_helper.CsvToRichTable.pre_run")
 def test_run_failure(mock_pre_run, mock_ret_value, mock_ret_type):
     mock_pre_run.return_value = mock_ret_value, mock_ret_type
     obj = CsvToRichTable(**{"suppress": False})

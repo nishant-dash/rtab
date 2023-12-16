@@ -6,7 +6,7 @@ from setuptools import setup
 
 
 def find_version() -> str:
-    """Parse rt version based on the git tag.
+    """Parse rtab version based on the git tag.
 
     :return: Version of the package.
     :rtype: str

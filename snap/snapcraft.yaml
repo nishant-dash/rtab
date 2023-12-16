@@ -1,6 +1,6 @@
 name: rich-tab
 base: core22
-adopt-info: rt
+adopt-info: rtab
 summary: Convert json, yaml or csv into tables using the rich library
 license: MIT
 description: |
@@ -10,20 +10,20 @@ grade: devel
 confinement: strict
 
 apps:
-  rt:
-    command: bin/rt.wrapper
-    aliases: [rt]
+  rtab:
+    command: bin/rtab.wrapper
+    aliases: [rtab]
     plugs:
       - home
 
 parts:
-  rt-wrapper:
+  rtab-wrapper:
     plugin: dump
     source: bin
     organize:
-      rt.wrapper: bin/rt.wrapper
+      rtab.wrapper: bin/rtab.wrapper
 
-  rt:
+  rtab:
     plugin: python
     build-packages:
       - python3-wheel
