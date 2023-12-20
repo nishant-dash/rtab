@@ -130,8 +130,7 @@ def main(  # pylint: disable=too-many-arguments
     else:
         console.print("[red]No file nor any one of json, yaml or csv chosen![/red]")
         raise typer.Exit(code=1)
-    obj.run(stdin_data)  # type: ignore[arg-type]
-    return 0
+    return obj.run(stdin_data)  # type: ignore[arg-type]
 
 
 def entrypoint() -> None:
