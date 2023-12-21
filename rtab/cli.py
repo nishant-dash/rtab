@@ -82,6 +82,15 @@ def main(  # pylint: disable=too-many-arguments
             show_default=False,
         ),
     ] = None,
+    wrap: Annotated[
+        bool,
+        typer.Option(
+            "-w",
+            "--wrap",
+            help="Allow wrapping of text in rows, helpful if row is long",
+            rich_help_panel="Modifiers",
+        ),
+    ] = False,
     rules: Annotated[
         str,
         typer.Option(
@@ -109,6 +118,7 @@ def main(  # pylint: disable=too-many-arguments
     :param quiet: Suppress highlighting
     :param separator: Specify a separator, only applies with table input '-t'
     :param rules: Add special highlighting ruels such as openstack, juju, etc...
+    :param wrap: Allow wrapping of text in rows, helpful if row is long
     :param file: Specify a file (file extension matters!)
     :raises Exit: 1 if no defining input is provided
     """
@@ -117,6 +127,7 @@ def main(  # pylint: disable=too-many-arguments
         "quiet": quiet,
         "separator": separator,
         "rules": rules,
+        "wrap": wrap,
     }
     if file:
         obj = FileToRichTable(**extra_options)

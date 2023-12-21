@@ -15,6 +15,8 @@ class BaseToRichTable:
 
     def __init__(self, **kwargs) -> None:
         """Initialize input dict as class attributes."""
+        self.table = None
+        self.wrap = False
         for k, v in kwargs.items():
             setattr(self, k, v)
 
@@ -29,7 +31,24 @@ class BaseToRichTable:
     def create_table(self) -> Table:
         """Create a rich table object."""
         # pylint: disable=maybe-no-member
-        return Table(box=box.ROUNDED, highlight=not self.quiet)
+        self.table = Table(box=box.ROUNDED, highlight=not self.quiet)
+
+    def add_column(self, column: str = ""):
+        """Add a column to a rich table object.
+
+        :param column: A string to add to the table as a column header
+        """
+        # pylint: disable=maybe-no-member
+        (self.table).add_column(column, overflow="fold" if self.wrap else "ellipsis")
+
+    def add_row(self, row: list = None):
+        """Add a row to a rich table object.
+
+        :param row: A list to add to the table as a row
+        """
+        # highlighter = ContextHighlight(self.rules)
+        # formatted_row = highlighter.apply_highlights(row)
+        (self.table).add_row(*row)
 
     def pre_run(self, stdin_data, skip_load: bool = False):  # pylint: disable=missing-type-doc
         """Do some basic checks and return loaded data.
@@ -57,25 +76,24 @@ class BaseToRichTable:
             return 1
 
         # Initialize table object
-        table = self.create_table()
+        self.create_table()
 
         if data_type == dict:
             # Show Logic
-            table.add_column("Key", overflow="fold")
-            table.add_column("Value", overflow="fold")
+            self.add_column("Key")
+            self.add_column("Value")
             for k, v in data.items():
-                table.add_row(k, str(v))
+                self.add_row([k, str(v)])
         elif data_type == list:
             # List Logic
             columns = list(data[0].keys())
             for c in columns:
-                table.add_column(c, overflow="fold")
+                self.add_column(c)
             for r in data:
-                temp_row = [str(v) for v in r.values()]
-                table.add_row(*temp_row)
+                self.add_row([str(v) for v in r.values()])
         else:
             console.print(f"Unsupported type {data_type}")
             return 1
 
-        console.print(table)
+        console.print(self.table)
         return 0

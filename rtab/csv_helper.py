@@ -19,7 +19,6 @@ class CsvToRichTable(BaseToRichTable):
 
         :param data: Can be either a string or file handler, used to load data from
         """
-        # @TODO try playing with Dictreader?
         loaded_data = []
         try:
             # pylint: disable=maybe-no-member
@@ -48,16 +47,16 @@ class CsvToRichTable(BaseToRichTable):
             return 1
 
         # Initialize table object
-        table = self.create_table()
+        self.create_table()
 
         if data_type == list:
             for column in list(data[0]):
-                table.add_column(column, overflow="fold")
+                self.add_column(column)
             for row in data[1:]:
-                table.add_row(*row)
+                self.add_row(row)
         else:
             console.print(f"Csv reader can't handle {data_type}")
             return 1
 
-        console.print(table)
+        console.print(self.table)
         return 0

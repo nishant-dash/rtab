@@ -10,8 +10,8 @@ from rtab.base_helper import BaseToRichTable
 
 def test_create_table():
     obj = BaseToRichTable(**{"quiet": False})
-    data = obj.create_table()
-    assert type(data) is Table
+    obj.create_table()
+    assert type(obj.table) is Table
 
 
 def test_pre_run_success():
