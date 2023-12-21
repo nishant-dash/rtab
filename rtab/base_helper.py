@@ -61,15 +61,15 @@ class BaseToRichTable:
 
         if data_type == dict:
             # Show Logic
-            table.add_column("Key")
-            table.add_column("Value")
+            table.add_column("Key", overflow="fold")
+            table.add_column("Value", overflow="fold")
             for k, v in data.items():
                 table.add_row(k, str(v))
         elif data_type == list:
             # List Logic
             columns = list(data[0].keys())
             for c in columns:
-                table.add_column(c)
+                table.add_column(c, overflow="fold")
             for r in data:
                 temp_row = [str(v) for v in r.values()]
                 table.add_row(*temp_row)

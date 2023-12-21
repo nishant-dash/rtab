@@ -52,7 +52,7 @@ class CsvToRichTable(BaseToRichTable):
 
         if data_type == list:
             for column in list(data[0]):
-                table.add_column(column)
+                table.add_column(column, overflow="fold")
             for row in data[1:]:
                 table.add_row(*row)
         else:
