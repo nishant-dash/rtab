@@ -17,6 +17,7 @@ class BaseToRichTable:
         """Initialize input dict as class attributes."""
         self.table = None
         self.wrap = False
+        self.lines = False
         for k, v in kwargs.items():
             setattr(self, k, v)
 
@@ -31,7 +32,7 @@ class BaseToRichTable:
     def create_table(self) -> Table:
         """Create a rich table object."""
         # pylint: disable=maybe-no-member
-        self.table = Table(box=box.ROUNDED, highlight=not self.quiet)
+        self.table = Table(box=box.ROUNDED, highlight=not self.quiet, show_lines=self.lines)
 
     def add_column(self, column: str = ""):
         """Add a column to a rich table object.

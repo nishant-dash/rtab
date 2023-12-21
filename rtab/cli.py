@@ -91,6 +91,15 @@ def main(  # pylint: disable=too-many-arguments
             rich_help_panel="Modifiers",
         ),
     ] = False,
+    lines: Annotated[
+        bool,
+        typer.Option(
+            "-l",
+            "--lines",
+            help="Show lines between rows",
+            rich_help_panel="Modifiers",
+        ),
+    ] = False,
     rules: Annotated[
         str,
         typer.Option(
@@ -119,6 +128,7 @@ def main(  # pylint: disable=too-many-arguments
     :param separator: Specify a separator, only applies with table input '-t'
     :param rules: Add special highlighting ruels such as openstack, juju, etc...
     :param wrap: Allow wrapping of text in rows, helpful if row is long
+    :param lines: Show lines between rows
     :param file: Specify a file (file extension matters!)
     :raises Exit: 1 if no defining input is provided
     """
@@ -128,6 +138,7 @@ def main(  # pylint: disable=too-many-arguments
         "separator": separator,
         "rules": rules,
         "wrap": wrap,
+        "lines": lines,
     }
     if file:
         obj = FileToRichTable(**extra_options)
