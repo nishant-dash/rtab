@@ -100,11 +100,11 @@ def main(  # pylint: disable=too-many-arguments
             rich_help_panel="Modifiers",
         ),
     ] = False,
-    rules: Annotated[
+    rule: Annotated[
         str,
         typer.Option(
             "-r",
-            "--rules",
+            "--rule",
             help="""
             Add special highlighting ruels such as [bold blue]openstack[/bold blue],\n
             [bold red]juju[/bold red], etc...
@@ -126,7 +126,7 @@ def main(  # pylint: disable=too-many-arguments
     :param is_csv: Bool flag to format csv into rich tables
     :param quiet: Suppress highlighting
     :param separator: Specify a separator, only applies with table input '-t'
-    :param rules: Add special highlighting ruels such as openstack, juju, etc...
+    :param rule: Add special highlighting ruels such as openstack, juju, etc...
     :param wrap: Allow wrapping of text in rows, helpful if row is long
     :param lines: Show lines between rows
     :param file: Specify a file (file extension matters!)
@@ -136,7 +136,7 @@ def main(  # pylint: disable=too-many-arguments
     extra_options = {
         "quiet": quiet,
         "separator": separator,
-        "rules": rules,
+        "rule": rule,
         "wrap": wrap,
         "lines": lines,
     }
