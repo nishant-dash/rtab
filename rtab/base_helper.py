@@ -6,6 +6,8 @@ from rich import box
 from rich.console import Console
 from rich.table import Table
 
+from rtab.context_highlighter import Dispatcher
+
 # Initialize console object for print
 console = Console()
 
@@ -18,6 +20,7 @@ class BaseToRichTable:
         self.table = None
         self.wrap = False
         self.lines = False
+        self.rule = ""
         for k, v in kwargs.items():
             setattr(self, k, v)
 
@@ -29,12 +32,12 @@ class BaseToRichTable:
         """
         return
 
-    def create_table(self) -> Table:
+    def create_table(self) -> None:
         """Create a rich table object."""
         # pylint: disable=maybe-no-member
         self.table = Table(box=box.ROUNDED, highlight=not self.quiet, show_lines=self.lines)
 
-    def add_column(self, column: str = ""):
+    def add_column(self, column: str = "") -> None:
         """Add a column to a rich table object.
 
         :param column: A string to add to the table as a column header
@@ -42,7 +45,7 @@ class BaseToRichTable:
         # pylint: disable=maybe-no-member
         (self.table).add_column(column, overflow="fold" if self.wrap else "ellipsis")
 
-    def add_row(self, row: list = None):
+    def add_row(self, row: list = None) -> None:
         """Add a row to a rich table object.
 
         :param row: A list to add to the table as a row
@@ -65,6 +68,15 @@ class BaseToRichTable:
         if not data:
             console.print(f"Can not load stdin into {type(self).__name__}")
         return data, type(data)
+
+    def console_print(self) -> None:
+        """Get custom rich console object and print.
+
+        If rule is not specified as a cli flag, then the default rich console object is used.
+        """
+        dc = Dispatcher()
+        custom_console = dc.get_console(self.rule)
+        custom_console.print(self.table)
 
     def run(self, stdin_data, skip_load: bool = False) -> int:  # pylint: disable=missing-type-doc
         """Load stdin as json and transform into rich table.
@@ -96,5 +108,7 @@ class BaseToRichTable:
             console.print(f"Unsupported type {data_type}")
             return 1
 
-        console.print(self.table)
+        # Print the table
+        self.console_print()
+
         return 0

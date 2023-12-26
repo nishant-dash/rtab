@@ -15,6 +15,11 @@ from rtab.file_helper import FileToRichTable
 from rtab.json_helper import JsonToRichTable
 from rtab.yaml_helper import YamlToRichTable
 
+OPENSTACK_RED = "bold #F20B4B"
+OPENSTACK_BLUE = "bold #19ADE5"
+JUJU = "bold #E95420"
+KUBERNETES = "bold #3970E4"
+
 cli = typer.Typer(
     name="rtab",
     rich_markup_mode="rich",
@@ -105,13 +110,14 @@ def main(  # pylint: disable=too-many-arguments
         typer.Option(
             "-r",
             "--rule",
-            help="""
-            Add special highlighting ruels such as [bold blue]openstack[/bold blue],\n
-            [bold red]juju[/bold red], etc...
+            help=f"""
+            Add special highlighting ruels such as
+            [{OPENSTACK_RED}]open[/{OPENSTACK_RED}][{OPENSTACK_BLUE}]stack[/{OPENSTACK_BLUE}],\n
+            [{JUJU}]juju[/{JUJU}], [{KUBERNETES}]kubernetes[/{KUBERNETES}], etc...
             """,
             rich_help_panel="Context Highlighting",
         ),
-    ] = None,
+    ] = "",
     file: Annotated[
         Optional[str],
         typer.Argument(
@@ -126,7 +132,7 @@ def main(  # pylint: disable=too-many-arguments
     :param is_csv: Bool flag to format csv into rich tables
     :param quiet: Suppress highlighting
     :param separator: Specify a separator, only applies with table input '-t'
-    :param rule: Add special highlighting ruels such as openstack, juju, etc...
+    :param rule: Add special highlighting ruels such as openstack, juju, kubernetes, etc...
     :param wrap: Allow wrapping of text in rows, helpful if row is long
     :param lines: Show lines between rows
     :param file: Specify a file (file extension matters!)

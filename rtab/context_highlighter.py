@@ -50,27 +50,13 @@ class Dispatcher:
 
         :param rule: string to match a specific highlighting rule
         """
+        theme = self.get_theme()
         match rule:
             case "openstack":
-                highlighter_object = OpenstackRegexHighlighter()
+                return Console(highlighter=OpenstackRegexHighlighter(), theme=theme)
             case "juju":
-                highlighter_object = JujuRegexHighlighter()
+                return Console(highlighter=JujuRegexHighlighter(), theme=theme)
             case "kubernetes":
-                highlighter_object = KubernetesRegexHighlighter()
+                return Console(highlighter=KubernetesRegexHighlighter(), theme=theme)
             case _:
-                highlighter_object = None
-        if highlighter_object:
-            return Console(highlighter=highlighter_object, theme=self.get_theme())
-        return Console()
-
-
-# if __name__ == "__main__":
-#     string = "Send cloud disabled lost XXX funds :) to money@example.org "
-#     string += "downbadxxx  xxx and   active make it ACTIVE lol but not 2023-10-10 down"
-
-#     dc = Dispatcher()
-#     console = dc.get_console("openstack")
-#     console.print(string)
-
-#     console = dc.get_console()
-#     console.print(string)
+                return Console()

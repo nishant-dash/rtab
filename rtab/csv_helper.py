@@ -58,5 +58,7 @@ class CsvToRichTable(BaseToRichTable):
             console.print(f"Csv reader can't handle {data_type}")
             return 1
 
-        console.print(self.table)
+        # Print the table
+        self.console_print()
+
         return 0
