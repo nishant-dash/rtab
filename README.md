@@ -13,6 +13,11 @@
 sudo snap install rich-tab --edge
 ```
 
+Until my snapstore auto-alias request has been completed,
+```bash
+sudo snap alias rich-tab.rtab rtab
+```
+
 # Usage
 ```bash
 something --format json | rtab -j
