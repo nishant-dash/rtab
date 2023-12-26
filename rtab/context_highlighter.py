@@ -5,23 +5,27 @@ from rich.highlighter import RegexHighlighter
 from rich.theme import Theme
 
 
-class OpenstackRegexHighlighter(RegexHighlighter):
-    # base_style = "openstack."
+class OpenstackRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-public-methods
+    """Highlight rules specific to openstack."""
+
     highlights = [
         r"(?P<positive>active|ACTIVE|:\))",
         r"(?P<negative>XXX|down|disabled)",
     ]
 
 
-class JujuRegexHighlighter(RegexHighlighter):
-    # base_style = "juju."
+class JujuRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-public-methods
+    """Highlight rules specific to juju."""
+
     highlights = [
         r"(?P<positive>active|idle|\bup\b)",
         r"(?P<negative>down|lost)",
     ]
 
 
-class KubernetesRegexHighlighter(RegexHighlighter):
+class KubernetesRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-public-methods
+    """Highlight rules specific to kubernetes."""
+
     highlights = [
         r"(?P<positive>active|idle|\bup\b)",
         r"(?P<negative>down|lost)",
@@ -29,45 +33,44 @@ class KubernetesRegexHighlighter(RegexHighlighter):
 
 
 class Dispatcher:
-    def __init__(self, rule: str = ""):
-        self.rule = rule
+    """Class to get a rich console object based on highlight mode requested."""
 
-    # def get_theme(self) -> Theme():
-    #     if self.rule:
-    #         self.rule = self.rule + "."
-    #     return Theme(
-    #         {
-    #             f"{self.rule}positive": "green",
-    #             f"{self.rule}negative": "red",
-    #         }
-    #     )
-
-    def get_theme(self) -> Theme():
+    @staticmethod
+    def get_theme() -> Theme:
+        """Generate a rich theme object without prefix."""
         return Theme(
             {
-                f"positive": "green",
-                f"negative": "red",
+                "positive": "green",
+                "negative": "red",
             }
         )
 
-    def get_highlighter(self):
-        match self.rule:
+    def get_console(self, rule: str = "") -> Console:
+        """Generate a rich console object with highlight rules.
+
+        :param rule: string to match a specific highlighting rule
+        """
+        match rule:
             case "openstack":
-                return OpenstackRegexHighlighter()
+                highlighter_object = OpenstackRegexHighlighter()
             case "juju":
-                return JujuRegexHighlighter()
+                highlighter_object = JujuRegexHighlighter()
             case "kubernetes":
-                return KubernetesRegexHighlighter()
+                highlighter_object = KubernetesRegexHighlighter()
             case _:
-                return OpenstackRegexHighlighter()
+                highlighter_object = None
+        if highlighter_object:
+            return Console(highlighter=highlighter_object, theme=self.get_theme())
+        return Console()
 
 
-if __name__ == "__main__":
-    string = "Send cloud disabled lost XXX funds :) to money@example.org downbadxxx  xxx and   active make it ACTIVE lol but not 2023-10-10 down"
-    dc = Dispatcher("openstack")
-    console = Console(highlighter=dc.get_highlighter(), theme=dc.get_theme())
-    console.print(string)
+# if __name__ == "__main__":
+#     string = "Send cloud disabled lost XXX funds :) to money@example.org "
+#     string += "downbadxxx  xxx and   active make it ACTIVE lol but not 2023-10-10 down"
 
-    dc = Dispatcher()
-    console = Console(highlighter=dc.get_highlighter(), theme=dc.get_theme())
-    console.print(string)
+#     dc = Dispatcher()
+#     console = dc.get_console("openstack")
+#     console.print(string)
+
+#     console = dc.get_console()
+#     console.print(string)
