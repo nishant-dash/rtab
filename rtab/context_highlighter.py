@@ -9,8 +9,8 @@ class OpenstackRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-pu
     """Highlight rules specific to openstack."""
 
     highlights = [
-        r"(?P<positive>active|ACTIVE|:\))",
-        r"(?P<negative>XXX|down|disabled)",
+        r"(?P<positive>active|ACTIVE|\B:\-\)\B|True|UP)",
+        r"(?P<negative>XXX|down|disabled|False|DOWN)",
     ]
 
 
@@ -27,8 +27,8 @@ class KubernetesRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-p
     """Highlight rules specific to kubernetes."""
 
     highlights = [
-        r"(?P<positive>active|idle|\bup\b)",
-        r"(?P<negative>down|lost)",
+        r"(?P<positive>Running|Bound|Ready)",
+        r"(?P<negative>Failed|Unknown|Pending)",
     ]
 
 
