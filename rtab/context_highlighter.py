@@ -9,8 +9,8 @@ class OpenstackRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-pu
     """Highlight rules specific to openstack."""
 
     highlights = [
-        r"(?P<positive>active|ACTIVE|\B:\-\)\B|True|UP)",
-        r"(?P<negative>XXX|down|disabled|False|DOWN)",
+        r"(?P<positive>active|ACTIVE|enabled|\B:\-\)\B|True|UP|available|ONLINE|up)",
+        r"(?P<negative>XXX|\bERROR\b|down|disabled|False|DOWN|error|OFFLINE|DEGRADED)",
     ]
 
 
