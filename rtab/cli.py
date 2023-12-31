@@ -86,7 +86,7 @@ def main(  # pylint: disable=too-many-arguments
             rich_help_panel="Modifiers",
             show_default=False,
         ),
-    ] = None,
+    ] = "",
     wrap: Annotated[
         bool,
         typer.Option(

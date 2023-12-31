@@ -1,6 +1,6 @@
 """This module definies a Base class to dictate loading and printing rich table data."""
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 from rich import box
 from rich.console import Console
@@ -12,12 +12,14 @@ from rtab.context_highlighter import Dispatcher
 console = Console()
 
 
-class BaseToRichTable:
+class BaseToRichTable(ABC):
     """Base class to defines a layout of loading and printing rich table data."""
 
     def __init__(self, **kwargs) -> None:
         """Initialize input dict as class attributes."""
         self.table = None
+        self.quiet = False
+        self.separator = ""
         self.wrap = False
         self.lines = False
         self.rule = ""
