@@ -48,6 +48,7 @@ class FileToRichTable:
             case ".csv":
                 self.obj = CsvToRichTable(**self.options)
             case _:
+                console.print(f"Unsupported file extension '{file_path}'")
                 return 1
 
         loaded_data = self.load(filename)
