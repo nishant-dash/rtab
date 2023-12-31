@@ -1,6 +1,7 @@
 """Load csv data from stdin or file handler and print a rich table."""
 
 import csv
+from typing import List
 
 from rich.console import Console
 
@@ -42,20 +43,20 @@ class CsvToRichTable(BaseToRichTable):
         :param stdin_data: Can be either a string or file handler, used to load data from
         :param skip_load: used to skip the call to load if data is pre-loaded into stdin_data
         """
-        data, data_type = self.pre_run(stdin_data, skip_load)
+        data = self.pre_run(stdin_data, skip_load)
         if not data:
             return 1
 
         # Initialize table object
         self.create_table()
 
-        if data_type == list:
+        if isinstance(data, List):
             for column in list(data[0]):
                 self.add_column(column)
             for row in data[1:]:
                 self.add_row(row)
         else:
-            console.print(f"Csv reader can't handle {data_type}")
+            console.print(f"Csv reader can't handle {type(data)}")
             return 1
 
         # Print the table

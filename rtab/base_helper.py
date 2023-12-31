@@ -1,6 +1,7 @@
 """This module definies a Base class to dictate loading and printing rich table data."""
 
 from abc import ABC, abstractmethod
+from typing import Dict, List
 
 from rich import box
 from rich.console import Console
@@ -69,7 +70,7 @@ class BaseToRichTable(ABC):
             data = self.load(stdin_data)
         if not data:
             console.print(f"Can not load stdin into {type(self).__name__}")
-        return data, type(data)
+        return data
 
     def console_print(self) -> None:
         """Get custom rich console object and print.
@@ -86,20 +87,20 @@ class BaseToRichTable(ABC):
         :param stdin_data: Can be either a string or file handler, used to load data from
         :param skip_load: used to skip the call to load if data is pre-loaded into stdin_data
         """
-        data, data_type = self.pre_run(stdin_data, skip_load)
+        data = self.pre_run(stdin_data, skip_load)
         if not data:
             return 1
 
         # Initialize table object
         self.create_table()
 
-        if data_type == dict:
+        if isinstance(data, Dict):
             # Show Logic
             self.add_column("Key")
             self.add_column("Value")
             for k, v in data.items():
                 self.add_row([k, str(v)])
-        elif data_type == list:
+        elif isinstance(data, List):
             # List Logic
             columns = list(data[0].keys())
             for c in columns:
@@ -107,7 +108,7 @@ class BaseToRichTable(ABC):
             for r in data:
                 self.add_row([str(v) for v in r.values()])
         else:
-            console.print(f"Unsupported type {data_type}")
+            console.print(f"Unsupported type {type(data)}")
             return 1
 
         # Print the table

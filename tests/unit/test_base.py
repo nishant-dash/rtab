@@ -19,8 +19,8 @@ def test_create_table():
 def test_pre_run_success():
     obj = BaseToRichTable()
     test_data = [{"test": "data"}]
-    data, td = obj.pre_run(test_data, skip_load=True)
-    assert td == list
+    data = obj.pre_run(test_data, skip_load=True)
+    assert type(data) is list
     assert data == test_data
 
 
@@ -28,7 +28,7 @@ def test_pre_run_success():
 def test_pre_run_failure():
     obj = BaseToRichTable()
     test_data = None
-    data, _ = obj.pre_run(test_data, skip_load=True)
+    data = obj.pre_run(test_data, skip_load=True)
     assert data == test_data
 
 
