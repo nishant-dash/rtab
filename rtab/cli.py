@@ -111,7 +111,7 @@ def main(  # pylint: disable=too-many-arguments
             "-r",
             "--rule",
             help=f"""
-            Add special highlighting ruels such as
+            Add special highlighting rules such as
             [{OPENSTACK_RED}]open[/{OPENSTACK_RED}][{OPENSTACK_BLUE}]stack[/{OPENSTACK_BLUE}],\n
             [{JUJU}]juju[/{JUJU}], [{KUBERNETES}]kubernetes[/{KUBERNETES}], etc...
             """,
@@ -132,7 +132,7 @@ def main(  # pylint: disable=too-many-arguments
     :param is_csv: Bool flag to format csv into rich tables
     :param quiet: Suppress highlighting
     :param separator: Specify a separator, only applies with table input '-t'
-    :param rule: Add special highlighting ruels such as openstack, juju, kubernetes, etc...
+    :param rule: Add special highlighting rules such as openstack, juju, kubernetes, etc...
     :param wrap: Allow wrapping of text in rows, helpful if row is long
     :param lines: Show lines between rows
     :param file: Specify a file (file extension matters!)
