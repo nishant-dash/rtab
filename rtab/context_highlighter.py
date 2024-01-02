@@ -28,7 +28,8 @@ class KubernetesRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-p
 
     highlights = [
         r"(?P<positive>Running|Bound|Ready)",
-        r"(?P<negative>Failed|Unknown|Pending)",
+        # pylint: disable=line-too-long
+        r"(?P<negative>Failed|Unknown|Pending|Error|ErrImagePull|ImagePullBackOff|CrashLoopBackOff|CreateContainerConfigError)",  # noqa: E501
     ]
 
 
