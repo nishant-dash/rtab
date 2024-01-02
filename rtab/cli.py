@@ -111,7 +111,7 @@ def main(  # pylint: disable=too-many-arguments
             "-r",
             "--rule",
             help=f"""
-            Add special highlighting rules such as
+            Use special highlighting rules for tools such as
             [{OPENSTACK_RED}]open[/{OPENSTACK_RED}][{OPENSTACK_BLUE}]stack[/{OPENSTACK_BLUE}],\n
             [{JUJU}]juju[/{JUJU}], [{KUBERNETES}]kubernetes[/{KUBERNETES}], etc...
             """,
