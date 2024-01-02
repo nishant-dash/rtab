@@ -4,6 +4,8 @@ from rich.console import Console
 from rich.highlighter import RegexHighlighter
 from rich.theme import Theme
 
+# pylint: disable=line-too-long
+
 
 class OpenstackRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-public-methods
     """Highlight rules specific to openstack."""
@@ -28,7 +30,6 @@ class KubernetesRegexHighlighter(RegexHighlighter):  # pylint: disable=too-few-p
 
     highlights = [
         r"(?P<positive>Running|Bound|Ready)",
-        # pylint: disable=line-too-long
         r"(?P<negative>Failed|Unknown|Pending|Error|ErrImagePull|ImagePullBackOff|CrashLoopBackOff|CreateContainerConfigError)",  # noqa: E501
     ]
 
