@@ -13,17 +13,16 @@
 sudo snap install rich-tab --edge
 ```
 
-Until my snapstore auto-alias request has been completed,
-```bash
-sudo snap alias rich-tab.rtab rtab
-```
-
 # Usage
+
 ```bash
 something --format json | rtab -j
 something --format yaml | rtab -y
 something --format csv | rtab -c
 ```
+
+> [!NOTE]
+> The snapstore install automatically adds the commmand alias `rtab`
 
 ### You can get creative with this and use it to pretty print various existing tools
 
