@@ -29,7 +29,8 @@ repo-info
 # Python builds
 deb_dist/
 dist/
-*.egg-info/
+eggs/
+*.egg*
 
 # Snaps
 *.snap
