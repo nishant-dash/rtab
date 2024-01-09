@@ -33,9 +33,11 @@ parts:
     stage-packages:
       - git
     override-build: |
+      set -e -u -x
+      git rev-parse --short HEAD > rtab/.repo-info
+      pip install setuptools-git-versioning
       craftctl default
-      set -e
       # set version
-      VERSION=$(python3 setup.py --version)
+      VERSION="$(setuptools-git-versioning)"
       echo "Version: ${VERSION}"
       craftctl set version=${VERSION}

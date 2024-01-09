@@ -1,3 +1,102 @@
+[build-system]
+requires = [
+    "setuptools>=61.2",  "setuptools-git-versioning"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+# Used if no untracked files and current commit is tagged.
+template = "{tag}"
+
+# Used if there are no untracked files, and current commit is not tagged.
+dev_template = "{tag}.post{ccount}"
+
+# Used if untracked files exist or uncommitted changes have been made.
+dirty_template = "{tag}.post{ccount}+dirty"
+
+[project]
+name = "rtab"
+description = "A simple formatting cli that converts json, yaml or csv into tables using the rich library"
+authors = [
+    { name = "Nishant Dash" },
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Plugins",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Installation/Setup",
+    "Topic :: Utilities",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "PyYaml",
+    "rich",
+    "typer",
+]
+dynamic = [
+    "version",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown; charset=UTF-8; variant=GFM"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/nishant-dash/rtab"
+
+[project.optional-dependencies]
+lint = [
+    "flake8",
+    "flake8-docstrings",
+    "flake8-colors",
+    "pyproject-flake8",
+    "pylint",
+    "mypy",
+    "black",
+    "isort",
+    "types-PyYAML",
+    "codespell",
+]
+unittests = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "gevent",
+]
+
+[project.scripts]
+rtab = "rtab:main"
+
+[tool.setuptools]
+include-package-data = true
+license-files = [
+    "LICENSE",
+]
+
+[tool.setuptools.packages.find]
+exclude = [
+    "tests",
+]
+namespaces = false
+
+[tool.setuptools.package-data]
+"*" = [
+    "*.csv",
+]
+
+[tool.aliases]
+test = "pytest"
+
 [tool.flake8]
 ignore = ["C901", "D100", "D101", "D102", "D103", "W503", "W504"]
 exclude = ['.eggs', '.git', '.tox', '.venv', '.build', 'build', 'report']
