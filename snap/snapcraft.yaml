@@ -26,9 +26,7 @@ parts:
   rtab:
     plugin: python
     build-packages:
-      - python3-wheel
       - python3-pip
-      - python3-setuptools-scm
     source: .
     stage-packages:
       - git

@@ -51,7 +51,7 @@ function osr {
 }
 export -f osr
 ```
-And then running commands as `osr server list`, etc...
+And then run commands as `osr server list`, etc...
 
 # Building and Dev
 ```bash

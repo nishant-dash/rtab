@@ -34,12 +34,14 @@ console = Console()
 
 @cli.command(
     epilog="""
-    Visit :link: [green underline]https://github.com/nishant-dash/rtab[/green underline]
+    Visit :link:
+[green link=https://github.com/nishant-dash/rtab]github.com/nishant-dash/rtab[/green link]
 for more info!
     """,
     help="""
-    :sparkles: A simple formatting cli that converts [bold]json[/bold], [bold]yaml[/bold]
-or [bold]csv[/bold] into tables using the rich library.
+    :sparkles: A simple formatting cli that converts [bold]json[/bold], [bold]yaml[/bold] or
+[bold]csv[/bold] into tables using the :link: [link=https://github.com/Textualize/rich]rich[/link]
+library.
     """,
     # no_args_is_help=True,
 )
