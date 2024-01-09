@@ -23,13 +23,11 @@ authors = [
     { name = "Nishant Dash" },
 ]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
     "Environment :: Plugins",
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
     "License :: OSI Approved :: MIT",
     "Operating System :: OS Independent",
-    "Topic :: System :: Installation/Setup",
     "Topic :: Utilities",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
