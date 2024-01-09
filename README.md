@@ -42,18 +42,28 @@ For example:
 - with rtab
 ![with_rtab](/png/with_rtab.png)
 
+#### Some more advanced usage
+
+You can wrap this around openstack or kubectl for example by defining something like this in your bashrc,
+```bash
+function osr {
+  openstack ${@?} --format json | rtab -j --wrap
+}
+export -f osr
+```
+And then running commands as `osr server list`, etc...
 
 # Building and Dev
 ```bash
+# unittests, linting etc...
+make lint
+make pre-commit unittests
+
 # to build the snap
 make build
 
 # to install a local version of the snap
-sudo snap install rtab.snap --dangerous
-
-# unittests, linting etc...
-make lint
-make unittests
+sudo snap install rich-tab.snap --dangerous
 ```
 
 <br>
