@@ -22,7 +22,7 @@ something --format csv | rtab -c
 ```
 
 > [!NOTE]
-> The snapstore install automatically adds the commmand alias `rtab`
+> The snapstore install automatically adds the command alias `rtab`
 
 ### You can get creative with this and use it to pretty print various existing tools
 

@@ -18,12 +18,12 @@ class BaseToRichTable(ABC):
 
     def __init__(self, **kwargs) -> None:
         """Initialize input dict as class attributes."""
-        self.table = None
-        self.quiet = False
-        self.separator = ""
-        self.wrap = False
-        self.lines = False
-        self.rule = ""
+        self.table = None  # rich Table object, set to none here to avoid creating it until needed
+        self.quiet: bool = False
+        self.separator: str = ""
+        self.wrap: bool = False
+        self.lines: bool = False
+        self.rule: str = ""
         for k, v in kwargs.items():
             setattr(self, k, v)
 
