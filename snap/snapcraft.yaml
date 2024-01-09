@@ -6,7 +6,7 @@ license: MIT
 description: |
   A simple formatting cli that converts json, yaml or csv into tables using the rich library
 
-grade: devel
+grade: stable
 confinement: strict
 
 apps:

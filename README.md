@@ -10,7 +10,7 @@
 # Installation &nbsp;&nbsp;&nbsp;&nbsp; [![rich-tab](https://snapcraft.io/rich-tab/badge.svg)](https://snapcraft.io/rich-tab)
 
 ```bash
-sudo snap install rich-tab --edge
+sudo snap install rich-tab
 ```
 
 # Usage
