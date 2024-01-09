@@ -24,7 +24,7 @@ htmlcov/
 .*.swp
 
 # version data
-repo-info
+rtab/.repo-info
 
 # Python builds
 deb_dist/
