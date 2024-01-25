@@ -56,7 +56,7 @@ And then run commands as `osr server list`, etc...
 or around Kubernetes like so (still working on adding some more functionality into rtab to make this cleaner)
 ```bash
 function kp {
-  kubectl ${@?} | sed 's/ ago/-ago/g' | sed 's/ (/-(/g' | tr ',' ';' | rtab -c -s " " -r kubernetes | tr ';' ','; | sed -e 's/-(/ (/g'
+  kubectl ${@?} | sed 's/ ago/-ago/g' | sed 's/ (/-(/g' | tr ',' ';' | rtab -c -s " " -r kubernetes | tr ';' ',' | sed -e 's/-(/ (/g'
 }
 export -f kp
 ```
