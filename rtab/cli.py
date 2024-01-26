@@ -115,7 +115,7 @@ def main(  # pylint: disable=too-many-arguments
             help=f"""
             Use special highlighting rules for tools such as
             [{OPENSTACK_RED}]open[/{OPENSTACK_RED}][{OPENSTACK_BLUE}]stack[/{OPENSTACK_BLUE}],\n
-            [{JUJU}]juju[/{JUJU}], [{KUBERNETES}]kubernetes[/{KUBERNETES}], etc...
+            [{JUJU}]juju[/{JUJU}], and [{KUBERNETES}]kubernetes[/{KUBERNETES}]
             """,
             rich_help_panel="Context Highlighting",
         ),
